@@ -1,0 +1,22 @@
+name: Cross-Platform Hello World
+
+on:
+  push:
+    branches: [ "testing" ]
+  workflow_dispatch:
+
+jobs:
+  hello-world:
+    name: Run Hello World
+    runs-on: ${{ matrix.os }}
+    
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+
+    steps:
+      - name: Print Hello World
+        shell: bash
+        run: |
+          echo "Hello, World! 🚀"
+          echo "I am running on: ${{ runner.os }}"
